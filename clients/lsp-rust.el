@@ -1880,6 +1880,8 @@ https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/lsp-extensions.m
     :rustcSource ,lsp-rust-analyzer-rustc-source
     :linkedProjects ,lsp-rust-analyzer-linked-projects
     :highlighting (:strings ,(lsp-json-bool lsp-rust-analyzer-highlighting-strings))
+    :hover (:memoryLayout (:enable :json-false))
+    :semanticHighlighting (:doc (:comment (:inject (:enable :json-false))))
     :experimental (:procAttrMacros ,(lsp-json-bool lsp-rust-analyzer-experimental-proc-attr-macros))))
 
 (lsp-register-client
