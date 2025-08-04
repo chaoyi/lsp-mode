@@ -396,7 +396,7 @@ including dependencies and the standard library."
    ("gopls.linksInHover" lsp-go-links-in-hover t)
    ("gopls.local" lsp-go-goimports-local)
    ("gopls.matcher" lsp-go-matcher)
-   ("gopls.semanticTokens" t t)
+   ; ("gopls.semanticTokens" t t)
    ("gopls.standaloneTags" lsp-go-standalone-tags)
    ("gopls.symbolMatcher" lsp-go-symbol-matcher)
    ("gopls.symbolScope" lsp-go-symbol-scope)
