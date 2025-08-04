@@ -232,6 +232,7 @@ automatically, browse to %s." user-code verification-uri))
   :notification-handlers (lsp-ht
                           ("$/progress" (lambda (&rest args) (lsp-message "$/progress with %S" args)))
                           ("featureFlagsNotification" #'ignore)
+                          ("copilot/mcpTools" #'ignore)
                           ("statusNotification" #'ignore)
                           ("didChangeStatus" #'ignore)
                           ("copilot/mcpTools" #'lsp-copilot--mcp-tools-notification)
