@@ -3813,7 +3813,7 @@ disappearing, unset all the variables related to it."
                                                                         lsp-semantic-tokens-honor-refresh-requests)
                                                                    :json-false))))))
                    ,@(when lsp-lens-enable '((codeLens . ((refreshSupport . t)))))
-                   ,@(when lsp-inlay-hint-enable '((inlayHint . ((refreshSupport . :json-false)))))
+                   ,@(when lsp-inlay-hint-enable '((inlayHint . ((refreshSupport . t)))))
                    (diagnostics . ((refreshSupport . :json-false)))
                    (fileOperations . ((didCreate . :json-false)
                                       (willCreate . :json-false)
@@ -7242,6 +7242,14 @@ server. WORKSPACE is the active workspace."
                         (lsp--lens-on-refresh workspace))
                       nil)
                      ((equal method "workspace/diagnostic/refresh")
+                      nil)
+                     ((equal method "workspace/inlayHint/refresh")
+                      (mapc (lambda (buf)
+                              (when (buffer-live-p buf)
+                                (with-current-buffer buf
+                                  (when (bound-and-true-p lsp-inlay-hints-mode)
+                                    (lsp--update-inlay-hints)))))
+                            (lsp--workspace-buffers workspace))
                       nil)
                      (t (lsp-warn "Unknown request method: %s" method) nil))))
     ;; Send response to the server.
